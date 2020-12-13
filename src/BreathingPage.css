@@ -8,16 +8,16 @@
   text-align: center;
 }
 
-h1, h2 {
+h2 {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  outline-style: none;
 }
 
 .circle {
-  display: inline-block;
-  margin: 0 0.5rem;
+  margin: 60px auto 10px auto;
   animation: pulse;
   animation-duration: 2s;
 }

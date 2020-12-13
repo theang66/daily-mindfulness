@@ -5,29 +5,37 @@ import Circle from "./Circle";
 
 class BreathingPage extends Component {
   state = {
-    bgColor: "#6DBE45",
+    bgColor: "#CBEEF3",
     colorList: [
+      "#83c5be",
       "#57B8FF",
       "#DCE1DE",
       "#F7EBE8",
       "#CBEEF3",
       "#a8dadc",
-      "#83c5be",
     ],
     breatheIn: true,
     clickMsg: "Press and hold on the circle",
+    breatheMsg: "Breathe in",
+    finished: false,
   };
 
   changeClickMsg = () => {
     console.log(this.state.breatheIn);
     if (this.state.breatheIn) {
       console.log("change to out");
-      this.setState({ clickMsg: "Release" });
-      this.state.breatheIn = false;
+      this.setState({
+        breatheMsg: "Breathe out",
+        clickMsg: "Release",
+        breatheIn: false,
+      });
     } else {
       console.log("change to in");
-      this.setState({ clickMsg: "Press and hold on the circle" });
-      this.state.breatheIn = true;
+      this.setState({
+        breatheMsg: "Breathe in",
+        clickMsg: "Press and hold on the circle",
+        breatheIn: true,
+      });
     }
   };
 
@@ -35,12 +43,24 @@ class BreathingPage extends Component {
     let intervalId = setInterval(this.changeClickMsg, 4000);
     this.setState({ intervalId: intervalId });
     // TODO: change to 5 minutes
+    // TODO: add a random gif
     setTimeout(this.endActivity, 10000);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.finished && !this.state.finished) {
+      let intervalId = setInterval(this.changeClickMsg, 4000);
+      this.setState({ intervalId: intervalId });
+      // TODO: change to 5 minutes
+      // TODO: add a random gif
+      setTimeout(this.endActivity, 10000);
+    }
   }
 
   endActivity = () => {
     console.log("end activity");
     clearInterval(this.state.intervalId);
+    this.setState({ finished: true });
   };
 
   changeBgColor = (e) => {
@@ -51,17 +71,35 @@ class BreathingPage extends Component {
     });
   };
 
-  render() {
-    let { bgColor, clickMsg } = this.state;
+  restart = () => {
+    this.setState({ finished: false });
+  };
 
-    return (
-      <div className="breathingApp" style={{ backgroundColor: bgColor }}>
-        <Circle onMouseDown={this.changeBgColor} onMouseUp={this.changeBgColor}>
-          <h1>An animated element</h1>
-          <h2>{clickMsg}</h2>
-        </Circle>
-      </div>
-    );
+  render() {
+    let { bgColor, clickMsg, breatheMsg, finished } = this.state;
+
+    if (finished) {
+      return (
+        <div className="breathingApp" style={{ backgroundColor: bgColor }}>
+          <h1>You've finished this breathing activity!</h1>
+          <br />
+          <h1 onClick={this.restart}>Restart</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="breathingApp" style={{ backgroundColor: bgColor }}>
+          <Circle
+            class="circle"
+            onMouseDown={this.changeBgColor}
+            onMouseUp={this.changeBgColor}
+          >
+            <h1>{breatheMsg}</h1>
+          </Circle>
+          <h2 style={{ "margin-top": "110px" }}>{clickMsg}</h2>
+        </div>
+      );
+    }
   }
 }
 
