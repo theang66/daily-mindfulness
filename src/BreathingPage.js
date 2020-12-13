@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./BreathingPage.css";
+
+import Circle from "./Circle";
 
 class BreathingPage extends Component {
   state = {
@@ -21,12 +22,12 @@ class BreathingPage extends Component {
     console.log(this.state.breatheIn);
     if (this.state.breatheIn) {
       console.log("change to out");
-      this.setState({clickMsg: "Release"});
+      this.setState({ clickMsg: "Release" });
       this.state.breatheIn = false;
     } else {
       console.log("change to in");
-      this.setState({clickMsg: "Press and hold on the circle"});
-      this.state.breatheIn = true;  
+      this.setState({ clickMsg: "Press and hold on the circle" });
+      this.state.breatheIn = true;
     }
   };
 
@@ -54,11 +55,11 @@ class BreathingPage extends Component {
     let { bgColor, clickMsg } = this.state;
 
     return (
-      <div className="breathingApp" style={{ backgroundColor: bgColor }} onMouseDown={this.changeBgColor} onMouseUp={this.changeBgColor}>
-        <h1 className="circle">
-          An animated element
-        </h1>
-        <h2>{clickMsg}</h2>
+      <div className="breathingApp" style={{ backgroundColor: bgColor }}>
+        <Circle onMouseDown={this.changeBgColor} onMouseUp={this.changeBgColor}>
+          <h1>An animated element</h1>
+          <h2>{clickMsg}</h2>
+        </Circle>
       </div>
     );
   }
