@@ -33,6 +33,7 @@ class BreathingPage extends Component {
   componentDidMount() {
     let intervalId = setInterval(this.changeClickMsg, 4000);
     this.setState({ intervalId: intervalId });
+    // TODO: change to 5 minutes
     setTimeout(this.endActivity, 10000);
   }
 
@@ -53,8 +54,8 @@ class BreathingPage extends Component {
     let { bgColor, clickMsg } = this.state;
 
     return (
-      <div className="breathingApp" style={{ backgroundColor: bgColor }}>
-        <h1 onClick={this.changeBgColor} className="circle">
+      <div className="breathingApp" style={{ backgroundColor: bgColor }} onMouseDown={this.changeBgColor} onMouseUp={this.changeBgColor}>
+        <h1 className="circle">
           An animated element
         </h1>
         <h2>{clickMsg}</h2>
