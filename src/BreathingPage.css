@@ -1,0 +1,14 @@
+.breathingApp {
+  height: 100%;
+  position: absolute; 
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.circle {
+  display: inline-block;
+  margin: 0 0.5rem;
+  animation: pulse;
+  animation-duration: 2s;
+}

@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'animate.css';
+import BreathingPage from './BreathingPage';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BreathingPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
