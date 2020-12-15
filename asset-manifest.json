@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/daily-mindfulness/static/css/main.6e2d0bdb.chunk.css",
-    "main.js": "/daily-mindfulness/static/js/main.b49470a0.chunk.js",
-    "main.js.map": "/daily-mindfulness/static/js/main.b49470a0.chunk.js.map",
+    "main.css": "/daily-mindfulness/static/css/main.2a9b57c1.chunk.css",
+    "main.js": "/daily-mindfulness/static/js/main.e9465957.chunk.js",
+    "main.js.map": "/daily-mindfulness/static/js/main.e9465957.chunk.js.map",
     "runtime-main.js": "/daily-mindfulness/static/js/runtime-main.54ea26f3.js",
     "runtime-main.js.map": "/daily-mindfulness/static/js/runtime-main.54ea26f3.js.map",
     "static/css/2.a1596f27.chunk.css": "/daily-mindfulness/static/css/2.a1596f27.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.27d68f6d.chunk.js.map": "/daily-mindfulness/static/js/3.27d68f6d.chunk.js.map",
     "index.html": "/daily-mindfulness/index.html",
     "static/css/2.a1596f27.chunk.css.map": "/daily-mindfulness/static/css/2.a1596f27.chunk.css.map",
-    "static/css/main.6e2d0bdb.chunk.css.map": "/daily-mindfulness/static/css/main.6e2d0bdb.chunk.css.map",
+    "static/css/main.2a9b57c1.chunk.css.map": "/daily-mindfulness/static/css/main.2a9b57c1.chunk.css.map",
     "static/js/2.dedab01f.chunk.js.LICENSE.txt": "/daily-mindfulness/static/js/2.dedab01f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.54ea26f3.js",
     "static/css/2.a1596f27.chunk.css",
     "static/js/2.dedab01f.chunk.js",
-    "static/css/main.6e2d0bdb.chunk.css",
-    "static/js/main.b49470a0.chunk.js"
+    "static/css/main.2a9b57c1.chunk.css",
+    "static/js/main.e9465957.chunk.js"
   ]
 }
