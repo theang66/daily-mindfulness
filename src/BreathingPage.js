@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./BreathingPage.css";
-
 import Circle from "./Circle";
 
 class BreathingPage extends Component {
@@ -13,54 +12,50 @@ class BreathingPage extends Component {
       "#F7EBE8",
       "#CBEEF3",
       "#a8dadc",
+      "#f0efeb",
+      "#bde0fe",
+      "#fcd5ce",
+      "#d8f3dc",
+      "#dee2ff",
+      "#f7ede2",
+      "#faedcb",
+      "#dbcdf0",
+      "#fde2e4",
+      "#eff7f6",
+      "#f0efeb",
+      "#ecf39e",
+      "#f0e6ef",
+      "#dde7c7",
     ],
     breatheIn: true,
     clickMsg: "Press and hold on the circle",
     breatheMsg: "Breathe in",
     finished: false,
+    started: false,
+  };
+
+  // TODO: add countdown after start button, add restart button, randomize gifs, fix text selection on phone, add more colors
+
+  start = () => {
+    let intervalId = setInterval(this.changeClickMsg, 4000);
+    this.setState({ intervalId: intervalId, started: true });
+    setTimeout(this.endActivity, 30000);
   };
 
   changeClickMsg = () => {
-    console.log(this.state.breatheIn);
     if (this.state.breatheIn) {
-      console.log("change to out");
       this.setState({
         breatheMsg: "Breathe out",
         clickMsg: "Release",
         breatheIn: false,
       });
     } else {
-      console.log("change to in");
       this.setState({
         breatheMsg: "Breathe in",
         clickMsg: "Press and hold on the circle",
         breatheIn: true,
       });
     }
-  };
-
-  componentDidMount() {
-    let intervalId = setInterval(this.changeClickMsg, 4000);
-    this.setState({ intervalId: intervalId });
-    // TODO: change to 5 minutes
-    // TODO: add a random gif
-    setTimeout(this.endActivity, 10000);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.finished && !this.state.finished) {
-      let intervalId = setInterval(this.changeClickMsg, 4000);
-      this.setState({ intervalId: intervalId });
-      // TODO: change to 5 minutes
-      // TODO: add a random gif
-      setTimeout(this.endActivity, 10000);
-    }
-  }
-
-  endActivity = () => {
-    console.log("end activity");
-    clearInterval(this.state.intervalId);
-    this.setState({ finished: true });
   };
 
   changeBgColor = (e) => {
@@ -71,22 +66,42 @@ class BreathingPage extends Component {
     });
   };
 
-  restart = () => {
-    this.setState({ finished: false });
+  endActivity = () => {
+    clearInterval(this.state.intervalId);
+    this.setState({ finished: true, started: false, breatheIn: true });
   };
 
   render() {
-    let { bgColor, clickMsg, breatheMsg, finished } = this.state;
+    let { bgColor, clickMsg, breatheMsg, finished, started } = this.state;
 
     if (finished) {
       return (
         <div className="breathingApp" style={{ backgroundColor: bgColor }}>
           <h1>You've finished this breathing activity!</h1>
-          <br />
-          <h1 onClick={this.restart}>Restart</h1>
+          <iframe
+            src="https://giphy.com/embed/ZdUnQS4AXEl1AERdil"
+            width="400"
+            height="400"
+            frameBorder="0"
+            class="giphy-embed"
+            allowFullScreen
+          ></iframe>
+          <p>
+            <a href="https://giphy.com/gifs/Friends-season-6-friends-tv-episode-602-ZdUnQS4AXEl1AERdil">
+              via GIPHY
+            </a>
+          </p>
         </div>
       );
-    } else {
+    } else if (!finished && !started) {
+      return (
+        <div className="breathingApp" style={{ backgroundColor: bgColor }}>
+          <h1>Welcome to your daily breathing exercise!</h1>
+          <br />
+          <button onClick={this.start} className="btn btn-success">Start</button>
+        </div>
+      );
+    } else if (!finished && started) {
       return (
         <div className="breathingApp" style={{ backgroundColor: bgColor }}>
           <Circle

@@ -1,11 +1,12 @@
 .breathingApp {
   height: 100%;
-  position: absolute; 
+  position: absolute;
   left: 0;
   width: 100%;
   overflow: hidden;
   transition: background-color 1s;
   text-align: center;
+  -webkit-touch-callout: none; 
 }
 
 h2 {
